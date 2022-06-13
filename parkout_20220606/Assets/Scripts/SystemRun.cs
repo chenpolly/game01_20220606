@@ -29,11 +29,22 @@ namespace Polly
         #region 功能：實作該系統的複雜方法
         #endregion
         #region 事件：程式入口
+        //喚醒事件：開始事件前執行一次，取得元件等等
+        private void Awake()
+        {
+            //ani 指定 主角身上的animator
+            ani = GetComponent<Animator>();
+        }
         //開始事件：播放遊戲時執行一次
         //初始化設定，例如：生命初始化3條
         private void Start()
         {
             print("你好阿~");
+        }
+        //更新事件：每秒執行約60次 60FPS (frame per second) 
+        private void Update()
+        {
+            print("<color=yellow>更新事件執行中</color>");
         }
         #endregion
 
