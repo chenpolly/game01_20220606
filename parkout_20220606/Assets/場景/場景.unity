@@ -252,6 +252,7 @@ GameObject:
   m_Component:
   - component: {fileID: 55733668}
   - component: {fileID: 55733669}
+  - component: {fileID: 55733670}
   m_Layer: 0
   m_Name: APIStatic
   m_TagString: Untagged
@@ -281,11 +282,24 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 55733667}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: fc04f4935e1d1b24b984307c3b3e8bf7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &55733670
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 55733667}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a09cc856a2652cd49a064ec07fae0538, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  frog: {fileID: 874760061}
 --- !u!1 &329972205
 GameObject:
   m_ObjectHideFlags: 0
@@ -2816,7 +2830,7 @@ MonoBehaviour:
     ModeOverride: 0
     LensShift: {x: 0, y: 0}
     GateFit: 2
-    m_SensorSize: {x: 1.3405173, y: 1}
+    m_SensorSize: {x: 1.5620915, y: 1}
   m_Transitions:
     m_BlendHint: 0
     m_InheritPosition: 0
