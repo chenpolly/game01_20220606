@@ -25,26 +25,43 @@ namespace Polly
         private float heightJump = 350;
         private Animator ani;
         private Rigidbody2D rig;
-        #endregion 
+        #endregion
         #region 功能：實作該系統的複雜方法
         #endregion
+        #region 功能：實作該系統的複雜方法
+        // 方法 method
+        // 語法
+        // 修飾詞 傳回資料類型 方法名稱(參數) {程式}
+        /// <summary>
+        /// 路步功能
+        /// </summary>
+        private void Run()
+        {
+            print("跑步中~");
+            rig.velocity = new Vector2(speedRun, rig.velocity.y);
+        }
+        #endregion
+
         #region 事件：程式入口
         //喚醒事件：開始事件前執行一次，取得元件等等
         private void Awake()
         {
             //ani 指定 主角身上的animator
             ani = GetComponent<Animator>();
+            rig = GetComponent<Rigidbody2D>();
         }
         //開始事件：播放遊戲時執行一次
         //初始化設定，例如：生命初始化3條
         private void Start()
         {
-            print("你好阿~");
+            //print("你好阿~");
         }
         //更新事件：每秒執行約60次 60FPS (frame per second) 
         private void Update()
         {
-            print("<color=yellow>更新事件執行中</color>");
+            //print("<color=yellow>更新事件執行中</color>");
+            //呼叫方法：方法名稱(對應的引數);
+            Run();
         }
         #endregion
 

@@ -16,15 +16,20 @@ namespace Polly
         // 3.使用非靜態API
         [SerializeField]
         private GameObject frog;
+        [SerializeField]
+        private Transform startPoint;
+
         // Start is called before the first frame update
         void Start()
         {
             // 非靜態屬性
+            
             // 1.取得
             // 語法：
             // 欄位名稱.非靜態屬性
             print("忍者蛙的啟動狀態：" + frog.activeInHierarchy);
             print("忍者蛙的預設圖層：" + frog.layer);
+            print("起點的座標：" + startPoint.position);
             
             // 2.設定
             // 語法：
@@ -32,7 +37,8 @@ namespace Polly
             // frog.activeInHierarchy = false; (唯讀屬性，官方沒寫)
             frog.tag = "Player";
             frog.layer = 4;
-
+            startPoint.position = new Vector3(0, 2, 0);
+            
             // 3. 使用 非靜態方法
             // 語法：欄位名稱.非靜態方法(對應的引數);
             frog.SetActive(false);
@@ -42,7 +48,8 @@ namespace Polly
         // Update is called once per frame
         void Update()
         {
-
+            startPoint.Translate(0.2f,0,0);
+            startPoint.Rotate(0,0,1);
         }
     }
     
