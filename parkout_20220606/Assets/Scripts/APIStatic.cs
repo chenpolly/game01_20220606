@@ -34,6 +34,7 @@ using UnityEngine;
             #region
             print("攝影機的數量"+ Camera.allCamerasCount);
             print("使用的應用平台:"+Application.platform);
+            Physics.sleepThreshold = 10;
             print("睡眠臨界值：" + Physics.sleepThreshold);
             Time.timeScale = 0.5f;
             print("時間大小 :" + Time.timeScale);
