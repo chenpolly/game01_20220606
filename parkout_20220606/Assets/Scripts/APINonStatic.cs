@@ -19,7 +19,7 @@ namespace Polly
         [SerializeField]
         private Transform startPoint;
 
-        // Start is called before the first frame update
+       
         void Start()
         {
             // «DÀRºAÄÝ©Ê
