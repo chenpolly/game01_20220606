@@ -33,10 +33,13 @@ public class APINonStaticPractice : MonoBehaviour
         Capsule01.transform.localScale = new Vector3(3, 2, 1);
         //讓正方體繞著球體轉動
         Cube01.transform.RotateAround(Sphere01.transform.position,new Vector3(0,0,1), 36*Time.deltaTime);
+        //球體自轉
+        Sphere01.transform.Rotate(90, 0, 0, Space.Self);
+
         //按下space後產生向上的推力
         if (Input.GetKeyDown(KeyCode.Space))
         {
-            Capsule01.GetComponent<Rigidbody>().AddForce(0, 5, 0, ForceMode.Impulse);
+            Capsule01.GetComponent<Rigidbody>().AddForce(0, 10, 0, ForceMode.Impulse);
         }
         
     }
