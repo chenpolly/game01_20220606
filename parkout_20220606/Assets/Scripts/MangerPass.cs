@@ -15,6 +15,9 @@ namespace Polly
         [SerializeField, Header("跳躍系統")]
         #region 其中一個物件有勾選is trigger
         private SystemJump systemJump;
+        [SerializeField, Header("結束管理器")]
+        private ManagerFinal managerFinal;
+
         //兩個物件碰撞時執行一次
         private void OnTriggerEnter2D(Collider2D collision)
         {
@@ -24,6 +27,8 @@ namespace Polly
             {
                 systemRun.enabled = false; //關閉跑步系統
                 systemJump.enabled = false; //關閉跳躍系統
+                managerFinal.enabled = true; //啟動結束管理器
+                managerFinal.stringTitle = "恭喜過關~";
             }
         }
         //兩個物件碰撞時執行一次
