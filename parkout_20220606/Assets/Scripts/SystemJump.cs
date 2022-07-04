@@ -12,9 +12,28 @@ namespace Polly
         private Animator ani;
         private Rigidbody2D rig;
         private bool clickJump;
+        [SerializeField, Header("檢查地板尺寸")]
+        private Vector3 v3CheckGroundSize = Vector3.one;
+        [SerializeField, Header("檢查地板位移")]
+        private Vector3 v3CheckGroundOffset;
+        [SerializeField, Header("檢查地板顏色")]
+        private Color colorCheckGround = new Color(1, 0, 0.2f, 0.5f);
+        [SerializeField, Header("檢查地板圖層")]
+        private LayerMask layerCheckGround;
+        
+        private bool isGround;
         #endregion
 
         #region 事件
+        //繪製圖示
+        //在編輯器內繪製輔助用的線條，形狀或圖片：遊戲內不會出現
+        private void OnDrawGizmos()
+        {
+            //1.決定顏色
+            Gizmos.color = colorCheckGround;
+            //2.繪製圖示
+            Gizmos.DrawCube(transform.position + v3CheckGroundOffset,v3CheckGroundSize);
+        }
         private void Awake()
         {
             ani = GetComponent<Animator>();
@@ -26,6 +45,7 @@ namespace Polly
         private void Update()
         {
             JumpKey();
+            CheckGroud();
         }
         //一秒50次
         private void FixedUpdate()
@@ -43,19 +63,33 @@ namespace Polly
             //if 判斷式語法：if(布林值){布林值 為 true 執行程式}
             if (Input.GetKeyDown(KeyCode.Space))
             {
-                print("jumping~");
+                //print("jumping~");
                 clickJump = true;
+            }
+            else if (Input.GetKeyUp(KeyCode.Space))
+            {
+                clickJump = false;
             }
         }
         private void JumpForce()
         {
-            if (clickJump)
+            //如果 點擊跳躍 並且 在地板上
+            if (clickJump && isGround)
             {
                 rig.AddForce(new Vector2(0, heightJump));
                 clickJump = false;
             }
         }
-
+        /// <summary>
+        /// 檢查是否碰到地板
+        /// </summary>
+        private void CheckGroud()
+        {
+            Collider2D hit = Physics2D.OverlapBox(transform.position + v3CheckGroundOffset, v3CheckGroundSize,0,layerCheckGround);
+            //print("碰到的物件："+hit.name);
+            isGround = hit;
+            
+        }
         #endregion
     }
 

@@ -21,8 +21,8 @@ namespace Polly
         //range 範圍：僅限數值類型資料 int, float, byte, long
         [SerializeField, Header("跑步速度"), Tooltip("這是角色的跑步速度"),Range(0,100)]
         private float speedRun = 3.5f;
-        [SerializeField,Header("跳躍高度"), Range(0,1000)]
-        private float heightJump = 350;
+        //[SerializeField,Header("跳躍高度"), Range(0,1000)]
+        //private float heightJump = 350;
         private Animator ani;
         private Rigidbody2D rig;
         #endregion
@@ -62,6 +62,18 @@ namespace Polly
             //print("<color=yellow>更新事件執行中</color>");
             //呼叫方法：方法名稱(對應的引數);
             Run();
+            
+        }
+        //此元件被勾選時執行一次
+        private void OnEnable()
+        {
+            
+        }
+        //此元件被取消時執行一次
+        private void OnDisable()
+        {
+            //加速度歸零
+            rig.velocity = Vector3.zero;
         }
         #endregion
 
