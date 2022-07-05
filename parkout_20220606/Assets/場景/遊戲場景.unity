@@ -4252,7 +4252,7 @@ MonoBehaviour:
   m_IsGlobal: 1
   priority: 0
   blendDistance: 0
-  weight: 1
+  weight: 0.648
   sharedProfile: {fileID: 11400000, guid: 7e38bc38a27e2504cb5a56acc177eaf3, type: 2}
 --- !u!4 &1421258054
 Transform:
@@ -4448,7 +4448,7 @@ SpriteRenderer:
   m_FlipX: 1
   m_FlipY: 1
   m_DrawMode: 2
-  m_Size: {x: 40, y: 9.95}
+  m_Size: {x: 58.23163, y: 37.009857}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
@@ -4462,7 +4462,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2127370610}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 10.91, y: -0.14, z: 0}
+  m_LocalPosition: {x: 10.6779, y: 4.7534, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
