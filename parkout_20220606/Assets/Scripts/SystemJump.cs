@@ -9,9 +9,7 @@ namespace Polly
         #region 資料
         [SerializeField, Header("跳躍高度"), Range(0, 1000)]
         private float heightJump = 350;
-        private Animator ani;
-        private Rigidbody2D rig;
-        private bool clickJump;
+        
         [SerializeField, Header("檢查地板尺寸")]
         private Vector3 v3CheckGroundSize = Vector3.one;
         [SerializeField, Header("檢查地板位移")]
@@ -20,8 +18,16 @@ namespace Polly
         private Color colorCheckGround = new Color(1, 0, 0.2f, 0.5f);
         [SerializeField, Header("檢查地板圖層")]
         private LayerMask layerCheckGround;
-        
+        [SerializeField, Header("跳躍動畫參數")]
+        private string nameJump = "跳躍開關";
+        [SerializeField, Header("跳躍音效")]
+        private AudioClip soundJump;
+
+        private Animator ani;
+        private Rigidbody2D rig;
+        private bool clickJump;
         private bool isGround;
+        private AudioSource aud;
         #endregion
 
         #region 事件
@@ -38,6 +44,7 @@ namespace Polly
         {
             ani = GetComponent<Animator>();
             rig = GetComponent<Rigidbody2D>();
+            aud = GetComponent<AudioSource>();
 
         }
         // input API建議在update呼叫
@@ -46,6 +53,7 @@ namespace Polly
         {
             JumpKey();
             CheckGroud();
+            UpdateAnimator();
         }
         //一秒50次
         private void FixedUpdate()
@@ -77,7 +85,9 @@ namespace Polly
             if (clickJump && isGround)
             {
                 rig.AddForce(new Vector2(0, heightJump));
+                aud.PlayOneShot(soundJump, Random.Range(0.7f, 1.5f));
                 clickJump = false;
+                
             }
         }
         /// <summary>
@@ -89,6 +99,13 @@ namespace Polly
             //print("碰到的物件："+hit.name);
             isGround = hit;
             
+        }
+        /// <summary>
+        /// 更新動畫
+        /// </summary>
+        private void UpdateAnimator()
+        {
+            ani.SetBool(nameJump, !isGround);
         }
         #endregion
     }
